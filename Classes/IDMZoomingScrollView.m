@@ -45,7 +45,7 @@
 		// Image view
 		_photoImageView = [[IDMTapDetectingImageView alloc] initWithFrame:CGRectZero];
 		_photoImageView.tapDelegate = self;
-        _photoImageView.longPressDetected = self;
+        _photoImageView.longPressDelegate = self;
 		_photoImageView.backgroundColor = [UIColor clearColor];
         if (@available(iOS 11.0, *)) {
             _photoImageView.accessibilityIgnoresInvertColors = YES;
