@@ -11,10 +11,12 @@
 @implementation IDMTapDetectingImageView
 
 @synthesize tapDelegate;
+@synthesize longPressDelegate;
 
 - (id)initWithFrame:(CGRect)frame {
 	if ((self = [super initWithFrame:frame])) {
 		self.userInteractionEnabled = YES;
+        [self addLongPressGestureRecognizer];
 	}
 	return self;
 }
@@ -22,6 +24,7 @@
 - (id)initWithImage:(UIImage *)image {
 	if ((self = [super initWithImage:image])) {
 		self.userInteractionEnabled = YES;
+        [self addLongPressGestureRecognizer];
 	}
 	return self;
 }
@@ -29,6 +32,7 @@
 - (id)initWithImage:(UIImage *)image highlightedImage:(UIImage *)highlightedImage {
 	if ((self = [super initWithImage:image highlightedImage:highlightedImage])) {
 		self.userInteractionEnabled = YES;
+        [self addLongPressGestureRecognizer];
 	}
 	return self;
 }
@@ -66,5 +70,18 @@
 	if ([tapDelegate respondsToSelector:@selector(imageView:tripleTapDetected:)])
 		[tapDelegate imageView:self tripleTapDetected:touch];
 }
-
+#pragma mark ** longPress **
+// MARK: 长按手势修改
+- (void)addLongPressGestureRecognizer{
+    UILongPressGestureRecognizer *longPress = [[UILongPressGestureRecognizer alloc]initWithTarget:self action:@selector(longPress:)];
+    [self addGestureRecognizer:longPress];
+}
+- (void)longPress:(UILongPressGestureRecognizer *)sender{
+    if (sender.state == UIGestureRecognizerStateBegan) {
+        if ([longPressDelegate respondsToSelector:@selector(imageView:longPressDetected:)] ) {
+            [longPressDelegate imageView:self longPressDetected:sender];
+        }
+    }
+    
+}
 @end

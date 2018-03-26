@@ -1317,7 +1317,12 @@ NSLocalizedStringFromTableInBundle((key), nil, [NSBundle bundleWithPath:[[NSBund
 		[self setControlsHidden:![self areControlsHidden] animated:YES permanent:NO];
 	}
 }
-
+// MARK: 长按手势修改
+- (void)handleLongPress{
+    if ([_delegate respondsToSelector:@selector(photoBrowser:didLongPressAtIndex:)]) {
+        [_delegate photoBrowser:self didLongPressAtIndex:_currentPageIndex];
+    }
+}
 
 #pragma mark - Properties
 

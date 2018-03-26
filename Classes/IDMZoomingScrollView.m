@@ -338,5 +338,12 @@
 - (void)view:(UIView *)view doubleTapDetected:(UITouch *)touch {
     [self handleDoubleTap:[touch locationInView:view]];
 }
-
+#pragma mark ** longPress **
+// MARK: 长按手势修改
+- (void)imageView:(UIImageView *)imageView longPressDetected:(UILongPressGestureRecognizer *)longPress{
+    [self handleLongPress:longPress];
+}
+- (void)handleLongPress:(UILongPressGestureRecognizer *)longPress{
+    [_photoBrowser performSelector:@selector(handleLongPress) withObject:nil afterDelay:0.2];
+}
 @end

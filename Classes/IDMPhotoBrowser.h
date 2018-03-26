@@ -26,6 +26,9 @@
 - (void)photoBrowser:(IDMPhotoBrowser *)photoBrowser didDismissActionSheetWithButtonIndex:(NSUInteger)buttonIndex photoIndex:(NSUInteger)photoIndex;
 - (IDMCaptionView *)photoBrowser:(IDMPhotoBrowser *)photoBrowser captionViewForPhotoAtIndex:(NSUInteger)index;
 - (void)photoBrowser:(IDMPhotoBrowser *)photoBrowser imageFailed:(NSUInteger)index imageView:(IDMTapDetectingImageView *)imageView;
+
+// MARK: 长按手势修改
+- (void)photoBrowser:(IDMPhotoBrowser *)photoBrowser didLongPressAtIndex:(NSUInteger)index;
 @end
 
 // IDMPhotoBrowser
